@@ -1,0 +1,24 @@
+<configuration>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%c.%M:%L] %msg%n</pattern>
+		</encoder>
+	</appender>
+
+    <appender name="dproc" class="ch.qos.logback.core.FileAppender">
+        <file>target/logs/dproc.log</file>
+        <append>true</append>
+        <encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%c.%M:%L] %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+	<logger name="com.github.matschieu" level="DEBUG" additivity="false">
+		<appender-ref ref="dproc" />
+		<appender-ref ref="STDOUT" />
+	</logger> 
+
+	<root level="ERROR">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>
